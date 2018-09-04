@@ -11,9 +11,9 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: ['./js/src/app.js', './css/src/app.scss'],
+  entry: ['./assets/src/scripts/app.js', './assets/src/styles/app.scss'],
   output: {
-    filename: './js/build/app.min.[hash].js',
+    filename: './assets/dist/scripts/app.min.[hash].js',
     path: path.resolve(__dirname)
   },
   module: {
@@ -39,10 +39,10 @@ module.exports = {
   plugins: [
     // extract css into dedicated file
     new MiniCssExtractPlugin({
-      filename: './css/build/main.min.[hash].css'
+      filename: './assets/dist/styles/main.min.[hash].css'
     }), 
       // clean out build directories on each build
-      new CleanWebpackPlugin(['./js/build/*','./css/build/*'])
+      new CleanWebpackPlugin(['./assets/dist/scripts/*','./assets/dist/styles/*'])
   ],
   optimization: {
     minimizer: [
