@@ -24,7 +24,7 @@
   "scripts": {
     "webpack": "webpack",
     "debug": "npm run webpack -- --inspect --debug-brk",
-    "dev": "npm run webpack -- --mode development",
+    "dev": "npm run webpack -- --mode development --watch",
     "prod": "npm run webpack -- --mode production",
     "dev:debug": "npm run debug -- --mode development",
     "prod:debug": "npm run debug -- --mode production"
