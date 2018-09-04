@@ -11,4 +11,4 @@ function theme_styles() {
 	wp_enqueue_script( 'site_main_js', $jsFileURI , null , null , true );
 
 }
-add_action( 'wp_enqueue_scripts', 'theme_styles' ); 
+add_action( 'wp_enqueue_scripts', 'theme_styles' );

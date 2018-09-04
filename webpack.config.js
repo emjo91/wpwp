@@ -1,12 +1,10 @@
 const path = require('path');
-
+const webpack = require("webpack");
 // include the js minification plugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
 // include the css extraction and minification plugins
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-
 // clear unused js and css
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
@@ -41,8 +39,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './assets/dist/styles/main.min.[hash].css'
     }), 
-      // clean out build directories on each build
-      new CleanWebpackPlugin(['./assets/dist/scripts/*','./assets/dist/styles/*'])
+    // clean out build directories on each build
+    new CleanWebpackPlugin(['./assets/dist/scripts/*','./assets/dist/styles/*'])
   ],
   optimization: {
     minimizer: [

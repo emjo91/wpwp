@@ -22,9 +22,9 @@
     "webpack": "^4.17.1"
   },
   "scripts": {
-    "build": "webpack --mode development",
-    "dist": "webpack --mode production",
-    "watch": "webpack --watch --mode development"
+    "webpack": "webpack",
+    "dev": "npm run webpack -- --mode development",
+    "prod": "npm run webpack -- --mode production"
   },
   "repository": {
     "type": "git",
