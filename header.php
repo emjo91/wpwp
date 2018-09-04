@@ -7,7 +7,7 @@
     <meta name="charset" content="UTF-8">
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width" />
-    <title>Webpack to WordPress Starter Theme</title>
+    <title>Builderpress 2.0</title>
 	
     <!-- FONT AWESOME | REPLACE WITH NPM IF YOU WANT-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
