@@ -5,53 +5,54 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpackMerge = require('webpack-merge');
 
-module.exports = ({ mode }) => {
-  return {
-    mode,
-    entry: ['./assets/src/scripts/app.js', './assets/src/styles/app.scss'],
-    output: {
-      filename: './assets/dist/scripts/app.min.js',
-      path: path.resolve(__dirname)
-    },
-    module: {
-      rules: [
-        // perform js babelization on all .js files
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: ['babel-preset-env']
+const modeConfig = env => require(`./build-utils/webpack.${env}`)(env);
+
+module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
+  return webpackMerge (
+    {
+      mode,
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ['babel-preset-env']
+              }
             }
+          },
+          {
+            test: /\.(sass|scss)$/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
           }
-        },
-        // compile all .scss files to plain old css
-        {
-          test: /\.(sass|scss)$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-        }
-      ]
+        ]
+      },
+      entry: ['./assets/src/scripts/app.js', './assets/src/styles/app.scss'],
+      output: {
+        filename: './assets/dist/scripts/app.min.js',
+        path: path.resolve(__dirname)
+      }, //end output
+      plugins: [
+        new HtmlWebpackPlugin(),
+        new MiniCssExtractPlugin({
+          filename: './assets/dist/styles/main.min.css'
+        }), 
+        new CleanWebpackPlugin(['./assets/dist/scripts/*','./assets/dist/styles/*'])
+      ], //end plugins
+      optimization: {
+        minimizer: [
+          new UglifyJSPlugin({
+            cache: true,
+            parallel: true
+          }),
+          new OptimizeCSSAssetsPlugin({})
+        ]
+      } //end opt
     },
-    plugins: [
-      new HtmlWebpackPlugin(),
-      new MiniCssExtractPlugin({
-        filename: './assets/dist/styles/main.min.css'
-      }), 
-      // clean out build directories on each build
-      new CleanWebpackPlugin(['./assets/dist/scripts/*','./assets/dist/styles/*'])
-    ],
-    optimization: {
-      minimizer: [
-        // enable the js minification plugin
-        new UglifyJSPlugin({
-          cache: true,
-          parallel: true
-        }),
-        // enable the css minification plugin
-        new OptimizeCSSAssetsPlugin({})
-      ]
-    }
-  };
+    modeConfig(mode)
+  );
 };
