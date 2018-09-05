@@ -2,11 +2,11 @@ const path = require('path');
 const webpack = require("webpack");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = ({ mode }) => {
-  console.log(mode);
   return {
     mode,
     entry: ['./assets/src/scripts/app.js', './assets/src/styles/app.scss'],
@@ -35,7 +35,7 @@ module.exports = ({ mode }) => {
       ]
     },
     plugins: [
-      // extract css into dedicated file
+      new HtmlWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: './assets/dist/styles/main.min.css'
       }), 
