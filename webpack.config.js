@@ -8,7 +8,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // clear unused js and css
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-module.exports = {
+module.exports = () => ({
   entry: ['./assets/src/scripts/app.js', './assets/src/styles/app.scss'],
   output: {
     filename: './assets/dist/scripts/app.min.js',
@@ -53,4 +53,4 @@ module.exports = {
       new OptimizeCSSAssetsPlugin({})
     ]
   }
-};
+});
