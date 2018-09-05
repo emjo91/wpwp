@@ -11,7 +11,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry: ['./assets/src/scripts/app.js', './assets/src/styles/app.scss'],
   output: {
-    filename: './assets/dist/scripts/app.min.[hash].js',
+    filename: './assets/dist/scripts/app.min.js',
     path: path.resolve(__dirname)
   },
   module: {
@@ -37,7 +37,7 @@ module.exports = {
   plugins: [
     // extract css into dedicated file
     new MiniCssExtractPlugin({
-      filename: './assets/dist/styles/main.min.[hash].css'
+      filename: './assets/dist/styles/main.min.css'
     }), 
     // clean out build directories on each build
     new CleanWebpackPlugin(['./assets/dist/scripts/*','./assets/dist/styles/*'])
