@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackMerge = require('webpack-merge');
 const modeConfig = env => require(`./build-utils/webpack.${env}`)(env);
 
@@ -23,7 +22,6 @@ module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
         path: path.resolve(__dirname)
       }, //end output
       plugins: [
-        new HtmlWebpackPlugin(),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
           filename: './assets/dist/styles/main.min.css'
