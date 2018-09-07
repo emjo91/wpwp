@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.0",
-    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
@@ -21,14 +21,14 @@
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^1.3.0",
     "webpack": "^4.17.1",
-    "webpack-dev-server": "^3.1.7",
+    "webpack-dev-server": "^3.1.8",
     "webpack-merge": "^4.1.4"
   },
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
     "debug": "npm run webpack -- --inspect --debug-brk",
-    "dev": "npm run webpack-dev-server -- --env.mode development --watch",
+    "dev": "npm run webpack-dev-server -- --env.mode development --hot",
     "prod": "npm run webpack -- --env.mode production",
     "dev:debug": "npm run debug -- --env.mode development",
     "prod:debug": "npm run debug -- --env.mode production"

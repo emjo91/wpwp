@@ -24,6 +24,7 @@ module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
       }, //end output
       plugins: [
         new HtmlWebpackPlugin(),
+        new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
           filename: './assets/dist/styles/main.min.css'
         })
