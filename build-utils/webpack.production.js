@@ -23,7 +23,7 @@ module.exports = () => ({
 	},
 	plugins: [
         new CleanWebpackPlugin(['./assets/dist/scripts/*','./assets/dist/styles/*'])
-	],
+	], //end plugins
 	optimization: {
 		minimizer: [
 			new UglifyJSPlugin({
