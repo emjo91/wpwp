@@ -13,7 +13,7 @@ module.exports = () => ({
 		            '**/*.php'
 		        ],
 		        fn: function(event, file) {
-		            if (event === "change") {
+		            if (event === 'change') {
 		                const bs = require('browser-sync').get('bs-webpack-plugin');
 		                bs.reload();
 		            }

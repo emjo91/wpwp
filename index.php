@@ -1,9 +1,9 @@
 	<?php get_header(); ?>
 
 	<div>
-		<h1>BUILDERPRESS 8.0</h1>
+		<h1>BUILDERPRESS 2.2</h1>
 	</div>
 
-	<p>It's not working anymore...</p>
+	<p>Is this kind of working? NOPE.</p>
 
 	<?php get_footer(); ?>
